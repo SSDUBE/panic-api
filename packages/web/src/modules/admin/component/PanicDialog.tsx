@@ -65,37 +65,35 @@ const PanicDialog = ({open, setOpen, panics}: Props) => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {panics.map((panic: any) => {
-                    return (
-                      <TableRow>
-                        <TableCell component="th" scope="row">
-                          User Location
-                        </TableCell>
-                        <TableCell align="right">{panic.latitude}</TableCell>
-                        <TableCell align="right">{panic.longitude}</TableCell>
-                        <TableCell align="right">
-                          {moment(panic.createdAt).format('DD-MM-YYYY HH:mm A')}
-                        </TableCell>
-                        <TableCell align="right">
-                          <Button
-                            variant="contained"
-                            size="large"
-                            color="primary"
-                            className={classes.button}
-                            onClick={() => {
-                              setCoords({
-                                latitude: panic.latitude,
-                                longitude: panic.longitude,
-                              });
-                              setShowMaps(true);
-                            }}
-                          >
-                            Maps
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
+                  {panics.map((panic: any) => (
+                    <TableRow>
+                      <TableCell component="th" scope="row">
+                        User Location
+                      </TableCell>
+                      <TableCell align="right">{panic.latitude}</TableCell>
+                      <TableCell align="right">{panic.longitude}</TableCell>
+                      <TableCell align="right">
+                        {moment(panic.createdAt).format('DD-MM-YYYY HH:mm A')}
+                      </TableCell>
+                      <TableCell align="right">
+                        <Button
+                          variant="contained"
+                          size="large"
+                          color="primary"
+                          className={classes.button}
+                          onClick={() => {
+                            setCoords({
+                              latitude: panic.latitude,
+                              longitude: panic.longitude,
+                            });
+                            setShowMaps(true);
+                          }}
+                        >
+                          Maps
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </TableContainer>

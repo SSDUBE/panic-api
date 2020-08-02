@@ -1,5 +1,5 @@
 # source: http://localhost:5000/graphql
-# timestamp: Sun Aug 02 2020 19:16:20 GMT+0200 (South Africa Standard Time)
+# timestamp: Sun Aug 02 2020 20:49:26 GMT+0200 (South Africa Standard Time)
 
 schema {
   query: Query

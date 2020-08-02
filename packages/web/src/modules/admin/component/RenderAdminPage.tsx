@@ -47,9 +47,7 @@ const RenderAdminPage = ({data}: Props) => {
           icon={<PowerSettingsNewIcon />}
         />
       </BottomNavigation>
-      {data.viewer.user!.map((user) => {
-        return <UserCard user={user} />;
-      })}
+      <UserCard data={data} />
     </Box>
   );
 };

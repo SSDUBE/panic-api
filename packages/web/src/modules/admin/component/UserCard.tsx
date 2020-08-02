@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import moment from 'moment';
 import {theme} from '../../../Theme';
 import PanicDialog from './PanicDialog';
+import {AdminQueryResponse} from '../__generated__/AdminQuery.graphql';
 
 const useStyles = makeStyles({
   root: {
@@ -41,10 +42,10 @@ const useStyles = makeStyles({
 });
 
 interface Props {
-  user: any;
+  data: AdminQueryResponse;
 }
 
-const UserCard = ({user}: Props) => {
+const UserCard = ({data}: Props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [panics, setPanics] = React.useState([]);
@@ -65,34 +66,45 @@ const UserCard = ({user}: Props) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow>
-                <TableCell component="th" scope="row">
-                  User data
-                </TableCell>
-                <TableCell align="right">{user.fullname}</TableCell>
-                <TableCell align="right">{user.contactNumber}</TableCell>
-                <TableCell align="right">{user.username}</TableCell>
-                <TableCell align="right">{user.active}</TableCell>
-                <TableCell align="right">
-                  {moment(user.createdAt).format('DD-MM-YYYY HH:mm A')}
-                </TableCell>
-              </TableRow>
+              {data.viewer &&
+                data.viewer.user &&
+                data.viewer.user.length > 0 &&
+                data.viewer.user.map((user) => (
+                  <TableRow>
+                    <TableCell component="th" scope="row">
+                      User data
+                    </TableCell>
+                    <TableCell align="right">{user!.fullname}</TableCell>
+                    <TableCell align="right">{user!.contactNumber}</TableCell>
+                    <TableCell align="right">{user!.username}</TableCell>
+                    <TableCell align="right">{user!.active}</TableCell>
+                    <TableCell align="right">
+                      {
+                        // @ts-ignore
+                        moment(user!.createdAt).format('DD-MM-YYYY HH:mm A')
+                      }
+                    </TableCell>
+                    <TableCell align="right">
+                      <Button
+                        variant="contained"
+                        size="large"
+                        color="primary"
+                        className={classes.button}
+                        onClick={() => {
+                          // @ts-ignore
+                          setPanics(user!.userPanics);
+                          setOpen(true);
+                        }}
+                      >
+                        Panic Info
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </TableContainer>
       </CardContent>
-      <Button
-        variant="contained"
-        size="large"
-        color="primary"
-        className={classes.button}
-        onClick={() => {
-          setPanics(user.userPanics);
-          setOpen(true);
-        }}
-      >
-        Panic Info
-      </Button>
       <PanicDialog open={open} setOpen={setOpen} panics={panics} />
     </Card>
   );
