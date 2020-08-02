@@ -1,0 +1,81 @@
+{
+  "name": "basic-react-assessment",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@react-google-maps/api": "^1.9.9",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "babel-plugin-relay": "^10.0.1",
+    "formik": "^2.1.5",
+    "formik-material-ui": "^2.0.1",
+    "graphql": "^15.3.0",
+    "lodash": "^4.17.19",
+    "moment": "^2.27.0",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-geolocated": "^3.0.1",
+    "react-google-maps": "^9.4.5",
+    "react-relay": "^10.0.1",
+    "react-relay-network-modern": "^4.7.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "react-spinners": "^0.9.0",
+    "react-use": "^15.3.3",
+    "recompose": "^0.30.0",
+    "relay-compiler": "^10.0.1",
+    "relay-compiler-language-typescript": "^13.0.0",
+    "relay-hooks": "^3.5.2",
+    "relay-runtime": "^10.0.1",
+    "typescript": "^3.9.7",
+    "yup": "^0.29.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write \"./src/**/*.{tsx,ts,js,css}\"",
+    "update-schema": "graphql get-schema --project assessment",
+    "relay": "relay-compiler --src ./src --schema src/schemas/schema.graphql --language typescript"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "arrowParens": "always",
+    "bracketSpacing": false
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.5.0",
+    "@types/jest": "^26.0.7",
+    "@types/lodash": "^4.14.158",
+    "@types/moment": "^2.13.0",
+    "@types/node": "^14.0.25",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-relay": "^7.0.8",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/recompose": "^0.30.7",
+    "@types/yup": "^0.29.3"
+  }
+}

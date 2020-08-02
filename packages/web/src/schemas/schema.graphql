@@ -1,0 +1,68 @@
+# source: http://localhost:5000/graphql
+# timestamp: Sun Aug 02 2020 19:16:20 GMT+0200 (South Africa Standard Time)
+
+schema {
+  query: Query
+  mutation: Mutations
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+type Mutations {
+  userPanics(input: UserPanicsInput!): UserPanicsPayload
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+type Panics {
+  """The ID of an object"""
+  id: ID!
+  latitude: Float!
+  longitude: Float!
+  createdAt: DateTime
+}
+
+type Query {
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+  viewer: Viewer!
+}
+
+input UserPanicsInput {
+  latitude: Float!
+  longitude: Float!
+  clientMutationId: String
+}
+
+type UserPanicsPayload {
+  clientMutationId: String
+}
+
+type UserQuery {
+  """The ID of an object"""
+  id: ID!
+  fullname: String!
+  contactNumber: String!
+  username: String!
+  active: String!
+  createdAt: DateTime
+  userPanics: [Panics]!
+}
+
+type Viewer {
+  """The ID of an object"""
+  id: ID!
+  user: [UserQuery]
+}

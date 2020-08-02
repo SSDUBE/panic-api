@@ -1,0 +1,6 @@
+projects:
+  assessment:
+    schemaPath: ./schemas/schema.graphql
+    extensions:
+      endpoints:
+        dev: 'http://localhost:5000/graphql'
